@@ -8,19 +8,20 @@ import android.view.View;
 
 import com.example.tp3_pa_grupo_3.R;
 
-public class MainActivity extends AppCompatActivity {
+public class Register extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
-    public void onLogin(View view) {
-
+        setContentView(R.layout.activity_register);
     }
 
     public void onRegister(View view) {
-        startActivity(new Intent(this, Register.class));
+
+    }
+
+    public void onCancel(View view) {
+        startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 }

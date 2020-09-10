@@ -4,7 +4,12 @@
     <string name="login_to_start">Iniciá sesión para empezar</string>
     <string name="input_login">Nombre de usuario</string>
     <string name="input_password">Contraseña</string>
+    <string name="input_password_repeat">Repetir contraseña</string>
+    <string name="input_name">Nombre</string>
+    <string name="input_email">Correo electrónico</string>
     <string name="button_login">Iniciar sesión</string>
-    <string name="link_register">Registrarse</string>
-    <string name="car_image">Red Car</string>
+    <string name="accept">Aceptar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="register">Registrarse</string>
+    <string name="image_car">Red Car</string>
 </resources>
