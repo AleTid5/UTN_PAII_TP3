@@ -17,7 +17,7 @@
         android:focusable="true"
         android:rotation="45"
         app:backgroundTint="#000000"
-        app:borderWidth="2dp"
+        app:borderWidth="1dp"
         app:layout_constraintBottom_toBottomOf="@+id/grid_parking_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
