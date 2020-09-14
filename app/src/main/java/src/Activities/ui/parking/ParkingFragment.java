@@ -1,5 +1,7 @@
 package src.Activities.ui.parking;
 
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -35,6 +37,7 @@ public class ParkingFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_parking, container, false);
 
         FloatingActionButton fab = root.findViewById(R.id.fab);
+
         fab.setOnClickListener(view -> {
             Dialog dialog = new Dialog(root.getContext());
             dialog.setTitle("Registrar parqueo");
@@ -45,6 +48,16 @@ public class ParkingFragment extends Fragment {
 
             dialog.show();
         });
+
+        ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(
+                fab,
+                PropertyValuesHolder.ofFloat("scaleX", 1.05f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.05f));
+
+        scaleDown.setDuration(310);
+        scaleDown.setRepeatCount(ObjectAnimator.INFINITE);
+        scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
+        scaleDown.start();
 
         return root;
     }
