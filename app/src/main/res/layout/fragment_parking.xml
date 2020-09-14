@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context="src.Activities.ui.parking.ParkingFragment">
 
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:rotation="45"
+        app:layout_constraintBottom_toBottomOf="@+id/grid_parking_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        tools:ignore="MissingConstraints" />
+
     <GridView
         android:id="@+id/grid_parking_view"
         android:layout_width="match_parent"
@@ -17,5 +29,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent">
+
+    </GridView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

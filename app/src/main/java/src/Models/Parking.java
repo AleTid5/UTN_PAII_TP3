@@ -30,7 +30,7 @@ public class Parking {
 
     public void setTime(Integer time) throws TimeException {
         if (time <= 0) {
-            throw new TimeException("El tiempo es un valor que no podemos volver atrás. Solo podemos guardar valores positivos 😔");
+            throw new TimeException("Solo podemos guardar valores positivos 😔");
         }
 
         this.time = time;
