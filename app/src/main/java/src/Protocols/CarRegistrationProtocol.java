@@ -2,7 +2,6 @@ package src.Protocols;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicReference;
 import java.util.regex.Pattern;
 
 import src.Exceptions.CarRegistrationException;
@@ -27,8 +26,8 @@ public abstract class CarRegistrationProtocol {
 
     public static void validateCarRegistration(final String carRegistration) throws CarRegistrationException {
         Long checks = validators.stream()
-                .filter(validator -> validator.length.equals(carRegistration.length()))
-                .filter(validator -> validator.pattern.matcher(carRegistration.substring(0, validator.length)).find()).count();
+                .filter(validator -> validator.length.equals(carRegistration.length())) // Filtra los validadores que no sean necesarios
+                .filter(validator -> validator.pattern.matcher(carRegistration.substring(0, validator.length)).find()).count(); // Cuenta cuantas validaciones superó
 
         if (checks.equals(0L)) {
             throw new CarRegistrationException(String.format("La patente '%s' es inválida 😅", carRegistration));
