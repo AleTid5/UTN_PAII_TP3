@@ -22,6 +22,7 @@
     <string name="dialog_register_parking">Registrar parqueo</string>
     <string name="menu_parking">Parqueos</string>
     <string name="menu_account">Cuenta</string>
+    <string name="menu_close_session">Cerrar sesión</string>
     <string name="unavailable_time">No pudimos obtener el tiempo</string>
     <string name="missing_car_registration">Debe ingresar su matricula</string>
     <string name="missing_time">Debe ingresar el tiempo de estadia</string>

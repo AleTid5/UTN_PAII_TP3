@@ -13,6 +13,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tp3_pa_grupo_3.R;
@@ -51,35 +52,22 @@ public class ParkingFragment extends Fragment {
 
         ObjectAnimator scaleDown = ObjectAnimator.ofPropertyValuesHolder(
                 fab,
-                PropertyValuesHolder.ofFloat("scaleX", 1.05f),
-                PropertyValuesHolder.ofFloat("scaleY", 1.05f));
+                PropertyValuesHolder.ofFloat("scaleX", 1.1f),
+                PropertyValuesHolder.ofFloat("scaleY", 1.1f));
 
         scaleDown.setDuration(310);
         scaleDown.setRepeatCount(ObjectAnimator.INFINITE);
         scaleDown.setRepeatMode(ObjectAnimator.REVERSE);
         scaleDown.start();
 
-        return root;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        try {
-            List<Parking> some = Arrays.asList(
-                    new Parking("AB123CD", 35),
-                    new Parking("B123ACD", 123),
-                    new Parking("856FRE", 67),
-                    new Parking("KDE843", 60));
-
-            ParkingAdapter adapter = new ParkingAdapter(this.getContext(), some);
+        parkingViewModel.getParkingList().observe(getViewLifecycleOwner(), parkingList -> {
+            ParkingAdapter adapter = new ParkingAdapter(this.getContext(), parkingList);
 
             GridView gridView = requireView().findViewById(R.id.grid_parking_view);
             gridView.setAdapter(adapter);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        });
+
+        return root;
     }
 
     private void onDialogAccept(Dialog dialog, View dialogView, View parentView) {

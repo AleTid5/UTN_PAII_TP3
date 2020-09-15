@@ -1,3 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"/>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/item_close_session"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_power_settings_new_24"
+        android:onClick="onCloseSession"
+        android:title="@string/menu_close_session"
+        android:visible="true"
+        app:showAsAction="always" />
+</menu>
