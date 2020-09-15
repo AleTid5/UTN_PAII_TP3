@@ -1,23 +1,42 @@
 package src.Services;
 
-import java.util.ArrayList;
+import android.database.Cursor;
+
+import java.util.LinkedList;
 import java.util.List;
 
-import src.Exceptions.CarRegistrationException;
-import src.Exceptions.TimeException;
+import src.Database.DatabaseManager;
+import src.Database.Tables.ParkingTable;
 import src.Models.Parking;
 
 public abstract class ParkingService {
-    public static List<Parking> getParkingList() throws TimeException, CarRegistrationException {
-        return new ArrayList<Parking>() {{
-            add(new Parking("AB123CD", 35));
-            add(new Parking("B123ACD", 123));
-            add(new Parking("856FRE", 67));
-            add(new Parking("KDE843", 60));
-        }};
+    public static List<Parking> getParkingList() {
+        List<Parking> parkingList = new LinkedList<>(); // Linked list es más rapido para agregar y eliminar
+
+        Cursor cursor = new DatabaseManager().find(String.format(
+                "SELECT * FROM %s WHERE %s = %s",
+                ParkingTable.Entry.TABLE_NAME,
+                ParkingTable.Entry.USER_ID,
+                SessionService.getUserId()
+        ));
+
+        if (cursor.moveToFirst()) {
+            do {
+                try {
+                    parkingList.add(new Parking()
+                            .setTime(cursor.getInt(cursor.getColumnIndex(ParkingTable.Entry.TIME)))
+                            .setCarRegistration(cursor.getString(cursor.getColumnIndex(ParkingTable.Entry.CAR_REGISTER)))
+                    );
+                } catch (Exception ignored) {}
+            } while (cursor.moveToNext());
+        }
+
+        return parkingList;
     }
 
     public static void saveParking(Parking parking) {
-
+        try {
+            new DatabaseManager().save(ParkingTable.Entry.TABLE_NAME, parking);
+        } catch (Exception ignored) {}
     }
 }

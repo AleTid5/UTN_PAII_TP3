@@ -11,21 +11,17 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tp3_pa_grupo_3.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 import src.Activities.Adapters.ParkingAdapter;
-import src.Models.Parking;
+import src.Services.ContextManagerService;
 
 public class ParkingFragment extends Fragment {
 
@@ -33,6 +29,7 @@ public class ParkingFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        ContextManagerService.setContext(this.requireContext());
         parkingViewModel = new ViewModelProvider(this).get(ParkingViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_parking, container, false);

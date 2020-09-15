@@ -1,6 +1,12 @@
 package src.Models;
 
-public class User {
+import android.content.ContentValues;
+
+import src.Database.Tables.UserTable;
+import src.Interfaces.Entity;
+
+public class User implements Entity {
+    private Integer id;
     private String name;
     private String email;
     private String password;
@@ -13,6 +19,14 @@ public class User {
     public User(String name, String email, String password) {
         this(email, password);
         this.setName(name);
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -37,5 +51,16 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    @Override
+    public ContentValues toContentValues() {
+        ContentValues values = new ContentValues();
+
+        values.put(UserTable.Entry.NAME, this.name);
+        values.put(UserTable.Entry.EMAIL, this.email);
+        values.put(UserTable.Entry.PASSWORD, this.password);
+
+        return values;
     }
 }

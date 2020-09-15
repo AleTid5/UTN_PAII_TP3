@@ -14,10 +14,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.tp3_pa_grupo_3.R;
 
+import src.Services.ContextManagerService;
+
 public class AccountFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        ContextManagerService.setContext(this.requireContext());
         AccountViewModel accountViewModel = ViewModelProviders.of(this).get(AccountViewModel.class);
         View root = inflater.inflate(R.layout.fragment_account, container, false);
 

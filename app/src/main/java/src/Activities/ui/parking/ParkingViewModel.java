@@ -1,11 +1,11 @@
 package src.Activities.ui.parking;
 
+import android.content.Context;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,9 +19,7 @@ public class ParkingViewModel extends ViewModel {
     private MutableLiveData<List<Parking>> liveParkingList = new MutableLiveData<>();
 
     public ParkingViewModel() {
-        try {
-            liveParkingList.setValue(ParkingService.getParkingList());
-        } catch (Exception ignored) {}
+        liveParkingList.setValue(ParkingService.getParkingList());
     }
 
     public LiveData<List<Parking>> getParkingList() {
