@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context="src.Activities.ui.parking.ParkingFragment">
 
+    <TextView
+        android:id="@+id/not_found_parkings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/not_found_parkings"
+        android:textColor="#E91E63"
+        android:textSize="18dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"

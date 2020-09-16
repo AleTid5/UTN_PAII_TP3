@@ -1,6 +1,8 @@
 package src.Activities.Adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,20 +10,23 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.tp3_pa_grupo_3.R;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+import src.Activities.ui.parking.ParkingViewModel;
+import src.Exceptions.CarRegistrationException;
 import src.Exceptions.TimeException;
 import src.Models.Parking;
 import src.Protocols.TimeProtocol;
 
 public class ParkingAdapter extends BaseAdapter {
+    ParkingViewModel parkingViewModel;
     private List<Parking> elements;
-    private Context context;
 
-    public ParkingAdapter(Context context, List<Parking> elements) {
-        this.context = context;
+    public ParkingAdapter(ParkingViewModel parkingViewModel, List<Parking> elements) {
         this.elements = elements;
+        this.parkingViewModel = parkingViewModel;
     }
 
     @Override
@@ -41,7 +46,7 @@ public class ParkingAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
-        LayoutInflater inflater= LayoutInflater.from(viewGroup.getContext());
+        LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
         View newView = view;
 
         if (view == null){
@@ -50,6 +55,19 @@ public class ParkingAdapter extends BaseAdapter {
 
         TextView carRegistration = newView.findViewById(R.id.grid_car_registration);
         TextView parkingTime = newView.findViewById(R.id.grid_parking_time);
+        FloatingActionButton fab_remove_registration = newView.findViewById(R.id.btn_remove_registration);
+
+        fab_remove_registration.setOnClickListener(v -> {
+            String strCarRegistration = getItem(i).getCarRegistration();
+            AlertDialog.Builder builder = new AlertDialog.Builder(v.getContext());
+            builder.setTitle(String.format("¿Quitar el parqueo de %s?", strCarRegistration));
+            builder.setMessage(String.format("Realmente desea quitar el parqueo de %s", strCarRegistration));
+            builder.setPositiveButton(R.string.accept, (dialog, which) -> parkingViewModel.removeParking(getItem(i).getCarRegistration()));
+            builder.setNegativeButton(R.string.cancel, null);
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+        });
 
         carRegistration.setText(getItem(i).getCarRegistration());
 

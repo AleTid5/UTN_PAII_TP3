@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 import src.Exceptions.CarRegistrationException;
 import src.Exceptions.TimeException;
@@ -31,5 +32,17 @@ public class ParkingViewModel extends ViewModel {
         ParkingService.saveParking(parking);
         Objects.requireNonNull(liveParkingList.getValue()).add(parking);
         liveParkingList.postValue(liveParkingList.getValue());
+    }
+
+    public void removeParking(String carRegistration) {
+        try {
+            Parking parking = new Parking().setCarRegistration(carRegistration);
+            ParkingService.removeParking(parking);
+            List<Parking> parkingList = Objects.requireNonNull(liveParkingList.getValue())
+                    .stream()
+                    .filter(p -> !p.getCarRegistration().equals(parking.getCarRegistration()))
+                    .collect(Collectors.toList());
+            liveParkingList.postValue(parkingList);
+        } catch (Exception ignored) {}
     }
 }

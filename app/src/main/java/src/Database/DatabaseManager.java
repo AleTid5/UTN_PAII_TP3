@@ -49,4 +49,8 @@ public class DatabaseManager extends SQLiteOpenHelper {
     public Cursor find(String query) {
         return this.getReadableDatabase().rawQuery(query, null);
     }
+
+    public void remove(String table, String where, String[] values) {
+        this.getWritableDatabase().delete(table, where, values);
+    }
 }

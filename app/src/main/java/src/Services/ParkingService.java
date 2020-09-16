@@ -39,4 +39,14 @@ public abstract class ParkingService {
             new DatabaseManager().save(ParkingTable.Entry.TABLE_NAME, parking);
         } catch (Exception ignored) {}
     }
+
+    public static void removeParking(Parking parking) {
+        try {
+            new DatabaseManager().remove(
+                    ParkingTable.Entry.TABLE_NAME,
+                    String.format("%s = ?", ParkingTable.Entry.CAR_REGISTER),
+                    new String[] { String.valueOf(parking.getCarRegistration()) }
+            );
+        } catch (Exception ignored) {}
+    }
 }

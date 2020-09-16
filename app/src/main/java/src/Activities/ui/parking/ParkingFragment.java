@@ -58,10 +58,12 @@ public class ParkingFragment extends Fragment {
         scaleDown.start();
 
         parkingViewModel.getParkingList().observe(getViewLifecycleOwner(), parkingList -> {
-            ParkingAdapter adapter = new ParkingAdapter(this.getContext(), parkingList);
+            ParkingAdapter adapter = new ParkingAdapter(parkingViewModel, parkingList);
 
             GridView gridView = requireView().findViewById(R.id.grid_parking_view);
             gridView.setAdapter(adapter);
+
+            requireView().findViewById(R.id.not_found_parkings).setVisibility(parkingList.size() > 0 ? View.INVISIBLE : View.VISIBLE);
         });
 
         return root;
