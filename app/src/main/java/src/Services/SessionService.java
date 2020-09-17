@@ -7,14 +7,13 @@ import src.Models.User;
 public abstract class SessionService {
     private static User user = null;
 
-    public static void setUserId(Integer userId) {
+    public static void setUser(User user) {
         PreferenceManager.getDefaultSharedPreferences(ContextManagerService.getContext())
-                .edit().putInt("userId", userId).apply();
-    }
-
-    public static Integer getUserId() {
-        return PreferenceManager.getDefaultSharedPreferences(ContextManagerService.getContext())
-                .getInt("userId", -1);
+                .edit().putInt("userId", user.getId()).apply();
+        PreferenceManager.getDefaultSharedPreferences(ContextManagerService.getContext())
+                .edit().putString("name", user.getName()).apply();
+        PreferenceManager.getDefaultSharedPreferences(ContextManagerService.getContext())
+                .edit().putString("email", user.getEmail()).apply();
     }
 
     public static User getUser() {
@@ -34,5 +33,9 @@ public abstract class SessionService {
         } catch (Exception ignored) {}
 
         return user;
+    }
+
+    public static void cleanSession() {
+        user = null;
     }
 }

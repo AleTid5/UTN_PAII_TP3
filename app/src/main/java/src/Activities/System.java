@@ -16,6 +16,8 @@ import androidx.navigation.ui.NavigationUI;
 import com.example.tp3_pa_grupo_3.R;
 import com.google.android.material.navigation.NavigationView;
 
+import src.Services.SessionService;
+
 public class System extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -52,7 +54,8 @@ public class System extends AppCompatActivity {
                 || super.onSupportNavigateUp();
     }
 
-    public void onCloseSession(MenuItem item) {
+    public void onLogout(MenuItem item) {
+        SessionService.cleanSession();
         finish();
     }
 }

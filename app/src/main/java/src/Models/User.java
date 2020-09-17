@@ -10,6 +10,7 @@ import src.Database.Tables.UserTable;
 import src.Exceptions.EmailException;
 import src.Interfaces.Entity;
 import src.Protocols.EmailProtocol;
+import src.Protocols.PasswordProtocol;
 
 public class User implements Entity {
     private Integer id;
@@ -28,7 +29,8 @@ public class User implements Entity {
     }
 
     public User(Integer id, String name, String email) throws Exception {
-        this(name, email, null);
+        this.setEmail(email);
+        this.setName(name);
         this.setId(id);
     }
 
@@ -45,12 +47,12 @@ public class User implements Entity {
     }
 
     public void setName(String name) throws Exception {
-        if (!name.chars().allMatch(Character::isLetter)) {
+        if (!name.trim().chars().allMatch(Character::isLetter)) {
             throw new Exception("El nombre solo puede contener letras");
         }
 
-        if (name.length() < 3 || name.length() > 25) {
-            throw new Exception("El nombre debe contener entre 3 y 25 caracteres");
+        if (name.trim().length() < 3 || name.trim().length() > 20) {
+            throw new Exception("El nombre debe contener entre 3 y 20 caracteres");
         }
 
         this.name = StringUtils.capitalize(name);
@@ -75,7 +77,11 @@ public class User implements Entity {
             throw new Exception("La contraseña debe contener entre 3 y 25 caracteres");
         }
 
-        this.password = password;
+        this.password = PasswordProtocol.hash(password);
+    }
+
+    public void cleanPassword() {
+        this.password = null;
     }
 
     @Override

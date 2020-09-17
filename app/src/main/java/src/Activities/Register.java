@@ -40,13 +40,8 @@ public class Register extends AppCompatActivity {
 
             UserService.saveUser(user);
             finish();
-            Snackbar.make(view, "hola", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
-                    .show();
         } catch (Exception e) {
-            Snackbar.make(view, Objects.requireNonNull(e.getMessage()), Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
-                    .show();
+            Snackbar.make(view, Objects.requireNonNull(e.getMessage()), Snackbar.LENGTH_LONG).show();
         }
     }
 

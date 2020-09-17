@@ -85,11 +85,9 @@ public class ParkingFragment extends Fragment {
             dialog.dismiss();
 
             Snackbar.make(parentView, this.requireContext().getString(R.string.added_parking), Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
                     .show();
         } catch (Exception e) {
             Snackbar.make(dialogView, Objects.requireNonNull(e.getMessage()), Snackbar.LENGTH_LONG)
-                    .setAction("Action", null)
                     .show();
         }
     }

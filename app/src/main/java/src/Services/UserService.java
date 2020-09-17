@@ -10,6 +10,7 @@ import src.Database.Tables.ParkingTable;
 import src.Database.Tables.UserTable;
 import src.Models.Parking;
 import src.Models.User;
+import src.Protocols.PasswordProtocol;
 
 public abstract class UserService {
     public static List<Parking> getParkingList() {
@@ -34,6 +35,27 @@ public abstract class UserService {
         }
 
         return parkingList;
+    }
+
+    public static void authenticate(User user) throws Exception {
+        Cursor cursor = new DatabaseManager().find(String.format(
+                "SELECT * FROM %s WHERE %s = '%s' AND %s = '%s'",
+                UserTable.Entry.TABLE_NAME,
+                UserTable.Entry.EMAIL,
+                user.getEmail(),
+                UserTable.Entry.PASSWORD,
+                user.getPassword()
+        ));
+
+        if (!cursor.moveToFirst()) {
+            throw new Exception("Las credenciales ingresadas son incorrectas");
+        }
+
+        user.setId(cursor.getInt(cursor.getColumnIndex(UserTable.Entry._ID)));
+        user.setName(cursor.getString(cursor.getColumnIndex(UserTable.Entry.NAME)));
+        user.cleanPassword(); // Preventive
+
+        SessionService.setUser(user);
     }
 
     public static void saveUser(User user) {
