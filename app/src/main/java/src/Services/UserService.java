@@ -7,9 +7,11 @@ import java.util.List;
 
 import src.Database.DatabaseManager;
 import src.Database.Tables.ParkingTable;
+import src.Database.Tables.UserTable;
 import src.Models.Parking;
+import src.Models.User;
 
-public abstract class ParkingService {
+public abstract class UserService {
     public static List<Parking> getParkingList() {
         List<Parking> parkingList = new LinkedList<>(); // Linked list es más rapido para agregar y eliminar
 
@@ -34,19 +36,9 @@ public abstract class ParkingService {
         return parkingList;
     }
 
-    public static void saveParking(Parking parking) {
+    public static void saveUser(User user) {
         try {
-            new DatabaseManager().save(ParkingTable.Entry.TABLE_NAME, parking);
-        } catch (Exception ignored) {}
-    }
-
-    public static void removeParking(Parking parking) {
-        try {
-            new DatabaseManager().remove(
-                    ParkingTable.Entry.TABLE_NAME,
-                    String.format("%s = ?", ParkingTable.Entry.CAR_REGISTER),
-                    new String[] { String.valueOf(parking.getCarRegistration()) }
-            );
+            new DatabaseManager().save(UserTable.Entry.TABLE_NAME, user);
         } catch (Exception ignored) {}
     }
 }

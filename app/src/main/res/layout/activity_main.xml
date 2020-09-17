@@ -42,20 +42,20 @@
         app:srcCompat="@drawable/ic_launcher_foreground" />
 
     <EditText
-        android:id="@+id/input_name"
+        android:id="@+id/input_login_email"
         android:layout_width="309dp"
         android:layout_height="40dp"
         android:layout_marginTop="144dp"
+        android:autofillHints=""
         android:ems="10"
         android:hint="@string/input_login"
-        android:inputType="textPersonName"
+        android:inputType="textPersonName|textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <EditText
-        android:id="@+id/input_password"
+        android:id="@+id/input_login_password"
         android:layout_width="307dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -80,7 +80,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_password" />
+        app:layout_constraintTop_toBottomOf="@+id/input_login_password" />
 
     <TextView
         android:id="@+id/txt_register"

@@ -25,4 +25,5 @@
     <string name="missing_car_registration">Debe ingresar su matricula</string>
     <string name="missing_time">Debe ingresar el tiempo de estadia</string>
     <string name="added_parking">El parqueo ha sido agregado exitosamente</string>
+    <string name="register_image_alt">2 persons with plus button</string>
 </resources>

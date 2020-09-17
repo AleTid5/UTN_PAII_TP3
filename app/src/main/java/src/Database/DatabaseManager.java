@@ -25,7 +25,7 @@ public class DatabaseManager extends SQLiteOpenHelper {
                 + UserTable.Entry.NAME + " TEXT NOT NULL,"
                 + UserTable.Entry.EMAIL + " TEXT NOT NULL,"
                 + UserTable.Entry.PASSWORD + " TEXT NOT NULL,"
-                + "UNIQUE (" + UserTable.Entry._ID + "))");
+                + "UNIQUE (" + UserTable.Entry.EMAIL + "))");
 
         sqLiteDatabase.execSQL("CREATE TABLE " + ParkingTable.Entry.TABLE_NAME + " ("
                 + ParkingTable.Entry.USER_ID + " INTEGER,"

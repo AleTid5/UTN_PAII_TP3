@@ -14,7 +14,8 @@
         android:layout_marginTop="100dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/icons8_add_user_group_woman_man_64" />
+        app:srcCompat="@drawable/icons8_add_user_group_woman_man_64"
+        android:contentDescription="@string/register_image_alt" />
 
     <TextView
         android:id="@+id/textView"
@@ -50,21 +51,20 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/input_email"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/input_name" />
 
     <EditText
-        android:id="@+id/input_password"
+        android:id="@+id/input_login_password"
         android:layout_width="286dp"
         android:layout_height="42dp"
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/input_password"
-        android:inputType="textPersonName"
-        android:password="true"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
@@ -77,12 +77,11 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/input_password_repeat"
-        android:inputType="textPersonName"
-        android:password="true"
+        android:inputType="textPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/input_password" />
+        app:layout_constraintTop_toBottomOf="@+id/input_login_password" />
 
     <Button
         android:id="@+id/button_accept"

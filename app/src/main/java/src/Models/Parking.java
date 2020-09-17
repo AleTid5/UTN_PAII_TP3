@@ -49,7 +49,7 @@ public class Parking implements Entity {
     public ContentValues toContentValues() {
         ContentValues values = new ContentValues();
 
-        values.put(ParkingTable.Entry.USER_ID, SessionService.getUserId());
+        values.put(ParkingTable.Entry.USER_ID, SessionService.getUser().getId());
         values.put(ParkingTable.Entry.CAR_REGISTER, this.carRegistration);
         values.put(ParkingTable.Entry.TIME, this.time);
 
