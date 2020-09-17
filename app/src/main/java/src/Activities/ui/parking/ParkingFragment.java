@@ -29,7 +29,7 @@ public class ParkingFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        ContextManagerService.setContext(this.requireContext());
+        //ContextManagerService.setContext(this.requireContext());
         parkingViewModel = new ViewModelProvider(this).get(ParkingViewModel.class);
 
         View root = inflater.inflate(R.layout.fragment_parking, container, false);

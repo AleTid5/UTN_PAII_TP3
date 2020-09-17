@@ -7,6 +7,7 @@ import java.util.List;
 
 import src.Database.DatabaseManager;
 import src.Database.Tables.ParkingTable;
+import src.Exceptions.CarRegistrationException;
 import src.Models.Parking;
 
 public abstract class ParkingService {
@@ -34,10 +35,12 @@ public abstract class ParkingService {
         return parkingList;
     }
 
-    public static void saveParking(Parking parking) {
-        try {
-            new DatabaseManager().save(ParkingTable.Entry.TABLE_NAME, parking);
-        } catch (Exception ignored) {}
+    public static void saveParking(Parking parking) throws CarRegistrationException {
+        long id = new DatabaseManager().save(ParkingTable.Entry.TABLE_NAME, parking);
+
+        if (id == -1) {
+            throw new CarRegistrationException("Ya registró un parqueo con la patente ingresada");
+        }
     }
 
     public static void removeParking(Parking parking) {
