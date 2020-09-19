@@ -10,7 +10,6 @@ import src.Database.Tables.ParkingTable;
 import src.Database.Tables.UserTable;
 import src.Models.Parking;
 import src.Models.User;
-import src.Protocols.PasswordProtocol;
 
 public abstract class UserService {
     public static List<Parking> getParkingList() {

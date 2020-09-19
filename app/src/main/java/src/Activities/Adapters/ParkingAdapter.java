@@ -1,8 +1,6 @@
 package src.Activities.Adapters;
 
 import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +13,6 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 import src.Activities.ui.parking.ParkingViewModel;
-import src.Exceptions.CarRegistrationException;
 import src.Exceptions.TimeException;
 import src.Models.Parking;
 import src.Protocols.TimeProtocol;

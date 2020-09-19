@@ -11,18 +11,19 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.tp3_pa_grupo_3.R;
 
-import src.Services.ContextManagerService;
-
 public class AccountFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        //ContextManagerService.setContext(this.requireContext());
         AccountViewModel accountViewModel = new ViewModelProvider(this).get(AccountViewModel.class);
         View root = inflater.inflate(R.layout.fragment_account, container, false);
 
-
-        accountViewModel.fillUserInfo();
+        accountViewModel.fillUserInfo(
+                root.findViewById(R.id.input_name),
+                root.findViewById(R.id.input_email),
+                root.findViewById(R.id.input_total_parkings),
+                root.findViewById(R.id.input_total_time)
+        );
 
         return root;
     }

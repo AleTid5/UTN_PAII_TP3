@@ -4,8 +4,6 @@ import android.content.ContentValues;
 
 import org.apache.commons.lang3.StringUtils;
 
-import java.util.regex.Pattern;
-
 import src.Database.Tables.UserTable;
 import src.Exceptions.EmailException;
 import src.Interfaces.Entity;
